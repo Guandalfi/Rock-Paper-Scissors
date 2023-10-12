@@ -8,7 +8,7 @@
 
 std::string rand_computer_choice(std::string valid_options[6])
 {
-    int rand_int = rand() % (6 - 0 + 1) + 0;
+    int rand_int = rand() % (2 - 0 + 1) + 0;
     std::string computer_play = valid_options[rand_int];
     return computer_play;
 }
@@ -18,19 +18,20 @@ std::string decide_winner(std::string play_1, std::string play_2)
 {    
     std::string winner;
 
-    if (play_1 == "rock" && play_2 == "scissors" || play_1 == "scissors" && play_2 == "rock")
+    if ((play_1 == "rock" && play_2 == "scissors") || (play_1 == "scissors" && play_2 == "rock"))
     {
         winner = "rock";
         return winner;
-    }else if (play_1 == "rock" && play_2 == "paper" || play_1 == "paper" && play_2 == "rock")
+    }else if ((play_1 == "rock" && play_2 == "paper") || (play_1 == "paper" && play_2 == "rock"))
     {
         winner = "paper";
         return winner;
-    }else if (play_1 == "paper" && play_2 == "scissors" || play_1 == "scissors" && play_2 == "paper")
+    }else if ((play_1 == "paper" && play_2 == "scissors") || (play_1 == "scissors" && play_2 == "paper"))
     {
         winner = "scissors";
         return winner;
     }
+    return "1";
 }
 
 
@@ -102,17 +103,22 @@ int main(int argc, char const *argv[])
         //check if anyone wins
         if (player_choice == winner)
         {
-            std::cout << "Voce venceu !!!" << std::endl;
+            std::cout << "\nVoce venceu !!!" << std::endl;
+            std::cout << "computador escolheu: " << computer_choice << std::endl;
+            std::cout << "voce escolheu: " << player_choice << std::endl;
         }else if (computer_choice == winner)
         {
-            std::cout << "Voce perdeu, computador escolheu: " << computer_choice << std::endl;
-            std::cout << "Voce perdeu, voce escolheu: " << player_choice << std::endl;
+            std::cout << "\nVoce perdeu." << std::endl;
+            std::cout << "computador escolheu: " << computer_choice << std::endl;
+            std::cout << "voce escolheu: " << player_choice << std::endl;
         }else
         {
-            std::cout << "Empate !!!" << std::endl;
+            std::cout << "\nEmpatou !!!" << std::endl;
+            std::cout << "computador escolheu: " << computer_choice << std::endl;
+            std::cout << "voce escolheu: " << player_choice << std::endl;
         }
 
-        std::cout << "Deseja jogar novamente ?(y/n): ";
+        std::cout << "\nDeseja jogar novamente ?(y/n): ";
         std::cin >> continue_playing;
 
         if (continue_playing == 'n')
